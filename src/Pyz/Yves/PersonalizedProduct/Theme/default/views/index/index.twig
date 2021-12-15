@@ -1,0 +1,26 @@
+{% extends template('page-blank') %}
+
+{% define data = {
+	products: _view.products
+} %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        {% for product in data.products %}
+        <div class="col-3">
+            {% include molecule('product-card') with {
+                data: {
+                    name: product.abstract_name,
+                    abstractId: product.id_product_abstract,
+                    url: product.url,
+                    imageUrl: product.images.0.external_url_small,
+                    price: product.price,
+                    originalPrice: null
+                }
+            } only %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
