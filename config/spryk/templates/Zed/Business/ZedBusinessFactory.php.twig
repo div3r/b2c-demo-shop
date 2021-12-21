@@ -1,0 +1,32 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+
+namespace {{ organization }}\Zed\{{ module }}\Business;
+
+use {{ organization }}\Zed\{{ module }}\Business\Model\Reader\{{ module }}Reader;
+use {{ organization }}\Zed\{{ module }}\Business\Model\Writer\{{ module }}Writer;
+use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+
+/**
+ * @method \{{ organization }}\Zed\{{ module }}\{{ module }}Config getConfig()
+ */
+class {{ module }}Factory extends AbstractBusinessFactory
+{
+    /**
+     * @return {{ module }}Reader
+     */
+    public function create{{ module }}Reader(): {{ module }}Reader
+    {
+        return new {{ module }}Reader($this->getRepository());
+    }
+
+
+    /**
+    * @return {{ module }}Writer
+    */
+    public function create{{ module }}Writer(): {{ module }}Writer
+    {
+        return new {{ module }}Writer($this->getEntityManager());
+    }
+}

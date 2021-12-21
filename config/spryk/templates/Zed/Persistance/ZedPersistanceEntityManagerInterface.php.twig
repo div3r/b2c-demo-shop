@@ -1,0 +1,29 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+
+interface {{ module }}EntityManagerInterface
+{
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+    public function create{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+    public function update{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return void
+     */
+    public function delete{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): void;
+}

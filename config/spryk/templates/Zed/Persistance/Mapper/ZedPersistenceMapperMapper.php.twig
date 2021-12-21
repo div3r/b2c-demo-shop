@@ -1,0 +1,50 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence\Mapper;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }};
+use Propel\Runtime\Collection\ObjectCollection;
+
+class {{ module }}Mapper
+{
+    /**
+     * @param Pyz{{ module}} $pyz{{ module }}
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+    public function map{{ module }}EntityToTransfer(Pyz{{ module}} $pyz{{ module }}, {{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer
+    {
+        return ${{ module | lower }}Transfer->fromArray($pyz{{ module }}->toArray(), true);
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    * @param Pyz{{ module}} $pyz{{ module }}
+    *
+    * @return Pyz{{ module }}
+    */
+    public function map{{ module }}TransferToEntity({{ module }}Transfer ${{ module | lower }}Transfer, Pyz{{ module}} $pyz{{ module }}): Pyz{{ module }}
+    {
+        return $pyz{{ module }}->fromArray(${{ module | lower }}Transfer->toArray());
+    }
+
+    /**
+    * @param ObjectCollection $collection
+    *
+    * @return array
+    */
+    public function map{{ module }}EntityCollectionToTransfers(ObjectCollection $collection): array
+    {
+        ${{ module | lower }}Transfers = [];
+
+        foreach ($collection as ${{ module | lower }}Entity) {
+            ${{ module | lower }}Transfers[] = $this->map{{ module }}EntityToTransfer(${{ module | lower }}Entity, new {{ module }}Transfer());
+        }
+
+        return ${{ module | lower }}Transfers;
+
+    }
+
+}

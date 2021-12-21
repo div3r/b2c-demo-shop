@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new *module*Mapper to the Zed application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    template:
+        value: Zed/Persistence/Mapper/ZedPersistenceMapperMapper.php.twig
+
+    targetFilename:
+        value: "{{ module }}Mapper.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+
+preSpryks:
+    - AddModule

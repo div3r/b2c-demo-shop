@@ -1,0 +1,28 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }}Query;
+use Pyz\Zed\{{ module }}\Persistence\Mapper\{{ module }}Mapper;
+use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
+
+class {{ module }}PersistenceFactory extends AbstractPersistenceFactory
+{
+
+    /**
+     * @return Pyz{{ module }}Query
+     */
+    public function create{{ module }}Query(): Pyz{{ module }}Query
+    {
+        return Pyz{{ module }}Query::create();
+    }
+
+    /**
+     * @return {{ module }}Mapper
+     */
+    public function create{{ module }}Mapper(): {{ module }}Mapper
+    {
+        return new {{ module }}Mapper();
+    }
+
+}

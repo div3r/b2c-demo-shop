@@ -1,0 +1,66 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }};
+use Propel\Runtime\Exception\EntityNotFoundException;
+use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
+
+class {{ module }}EntityManager extends AbstractEntityManager implements {{ module }}EntityManagerInterface
+{
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+
+    public function create{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer
+    {
+        $pyz{{ module }}Entity = $this->getFactory()->create{{ module }}Mapper()->map{{ module }}TransferToEntity(${{ module | lower }}Transfer, new Pyz{{ module }}());
+        $pyz{{ module }}Entity->save();
+
+        return $this->getFactory()->create{{ module }}Mapper()->map{{ module }}EntityToTransfer($pyz{{ module }}Entity, ${{ module | lower }}Transfer);
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return {{ module }}Transfer
+    *@throws EntityNotFoundException
+    *
+    */
+    public function update{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer
+    {
+
+        ${{ module | lower }}Transfer->requireId{{ module }}();
+        $pyz{{ module }}Entity = $this->getFactory()->create{{ module }}Query()->findOneById{{ module }}(${{ module | lower }}Transfer->getId{{ module }}());
+
+        if (!$pyz{{ module }}Entity) {
+        throw new EntityNotFoundException(sprintf('{{ module }} entity with id: %s haven\'t been found', ${{ module | lower }}Transfer->getId{{ module }}()));
+        }
+
+        $pyz{{ module }}Entity = $this->getFactory()->create{{ module }}Mapper()->map{{ module }}TransferToEntity(${{ module | lower }}Transfer, $pyz{{ module }}Entity);
+        $pyz{{ module }}Entity->save();
+
+        return $this->getFactory()->create{{ module }}Mapper()->map{{ module }}EntityToTransfer($pyz{{ module }}Entity, ${{ module | lower }}Transfer);
+
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return void
+    */
+    public function delete{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): void
+    {
+
+        ${{ module | lower }}Transfer->requireId{{ module }}();
+        $pyz{{ module }}Entity = $this->getFactory()->create{{ module }}Query()->findOneById{{ module }}(${{ module | lower }}Transfer->getId{{ module }}());
+
+        if ($pyz{{ module }}Entity) {
+        $pyz{{ module }}Entity->delete();
+        }
+    }
+
+}

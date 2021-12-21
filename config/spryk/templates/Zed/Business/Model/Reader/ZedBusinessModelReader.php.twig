@@ -1,0 +1,44 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Business\Model\Reader;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+use Pyz\Zed\{{ module }}\Persistence\{{ module }}RepositoryInterface;
+
+class {{ module }}Reader
+{
+    /**
+     * @var {{ module }}RepositoryInterface
+     */
+    private ${{ module | lower }}Repository;
+
+    /**
+     * @param {{ module }}RepositoryInterface ${{ module | lower }}Repository
+     */
+
+    public function __construct({{ module }}RepositoryInterface ${{ module | lower }}Repository)
+    {
+        $this->{{ module | lower }}Repository = ${{ module | lower }}Repository;
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return {{ module }}Transfer|null
+    */
+    public function find{{ module }}ByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): ?{{ module }}Transfer
+    {
+        return $this->{{ module | lower }}Repository->find{{ module }}ByTransfer(${{ module | lower }}Transfer);
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return array
+    */
+
+    public function find{{ module }}sByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): array
+    {
+        return $this->{{ module | lower }}Repository->find{{ module }}sByTransfer(${{ module | lower }}Transfer);
+    }
+}

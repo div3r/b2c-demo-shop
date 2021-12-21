@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new *module*QueryContainer to the Zed application."
+mode: both
+
+arguments:
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+        default: Spryker
+
+    template:
+        value: Zed/Persistence/ZedPersistenceQueryContainer.php.twig
+
+    targetFilename:
+        value: "{{ module }}QueryContainer.php"
+
+    targetPath:
+        value: "{{ moduleRoot }}/src/{{ organization }}/Zed/{{ module }}/Persistence/"
+
+preSpryks:
+    - AddModule

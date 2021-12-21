@@ -1,0 +1,24 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+
+interface {{ module }}RepositoryInterface
+{
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer|null
+     */
+    public function find{{ module }}ByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): ?{{ module }}Transfer;
+
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return array
+     */
+    public function find{{ module }}sByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): array;
+
+}

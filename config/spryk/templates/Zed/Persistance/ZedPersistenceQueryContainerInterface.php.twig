@@ -1,0 +1,14 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }}Query;
+
+interface {{ module }}QueryContainerInterface
+{
+    /**
+     * @return Pyz{{ module }}Query
+     */
+    public function query{{ module }}(): Pyz{{ module }}Query;
+
+}

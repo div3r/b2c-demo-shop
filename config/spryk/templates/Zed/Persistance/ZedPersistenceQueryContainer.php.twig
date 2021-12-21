@@ -1,0 +1,19 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }}Query;
+use Spryker\Zed\Kernel\Persistence\AbstractQueryContainer;
+
+class {{ module }}QueryContainer extends AbstractQueryContainer implements {{ module }}QueryContainerInterface
+{
+
+    /**
+     * @return Pyz{{ module }}Query
+     */
+    public function query{{ module }}(): Pyz{{ module }}Query
+    {
+        return $this->getFactory()->create{{ module }}Query();
+    }
+
+}

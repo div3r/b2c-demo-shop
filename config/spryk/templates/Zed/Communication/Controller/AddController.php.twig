@@ -1,0 +1,71 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Communication\Controller;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+use Spryker\Service\UtilText\Model\Url\Url;
+use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * @method \Pyz\Zed\{{ module }}Gui\Communication\{{ module }}GuiCommunicationFactory getFactory()
+ */
+class AddController extends AbstractController
+{
+    protected const DEVELOPER_CREATED_SUCCESSFULLY_MESSAGE = '{{ module }} created successfully';
+
+    /**
+     * @param Request $request
+     *
+     * @return array|Response
+     */
+    public function indexAction(Request $request)
+    {
+
+        ${{ module | lower }}FormAdd = $this
+            ->getFactory()
+            ->get{{ module }}AddForm()
+            ->handleRequest($request);
+
+        if (${{ module | lower }}FormAdd->isSubmitted() && ${{ module | lower }}FormAdd->isValid()) {
+
+            ${{ module | lower }}Transfer = new {{ module }}Transfer();
+            ${{ module | lower }}Transfer->fromArray(${{ module | lower }}FormAdd->getData(), true);
+
+            $this->getFactory()->get{{ module }}Facade()->create{{ module }}(${{ module | lower }}Transfer);
+
+            $this->addSuccessMessage(static::DEVELOPER_CREATED_SUCCESSFULLY_MESSAGE);
+
+            return $this->generateBaseRedirectUrl(${{ module | lower }}Transfer);
+        }
+
+
+        return $this->viewResponse([
+            'cartAddForm' => ${{ module | lower }}FormAdd->createView(),
+        ]);
+
+    }
+
+
+    /**
+    * @param \Generated\Shared\Transfer\{{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return RedirectResponse
+    */
+    protected function generateBaseRedirectUrl({{ module }}Transfer ${{ module | lower }}Transfer): RedirectResponse
+    {
+
+        ${{ module | lower }}Transfer->requireId{{ module }}();
+
+        $url = Url::generate('/{{ module | lower }}-gui/view', [
+        ViewController::PARAM_ID_DEVELOPER => ${{ module | lower }}Transfer->getId{{ module }}(),
+
+        ]);
+
+        return $this->redirectResponse($url->build());
+
+    }
+
+}

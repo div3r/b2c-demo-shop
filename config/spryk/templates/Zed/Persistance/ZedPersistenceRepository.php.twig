@@ -1,0 +1,72 @@
+<?php
+
+namespace Pyz\Zed\{{ module }}\Persistence;
+
+use Generated\Shared\Transfer\{{ module }}Transfer;
+use Orm\Zed\{{ module }}\Persistence\Pyz{{ module }}Query;
+use Spryker\Zed\Kernel\Persistence\AbstractRepository;
+
+class {{ module }}Repository extends AbstractRepository implements {{ module }}RepositoryInterface
+{
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer|null
+     */
+
+    public function find{{ module }}ByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): ?{{ module }}Transfer
+    {
+        ${{ module | lower }}Query = $this->createQueryBy{{ module }}Transfer(${{ module | lower }}Transfer);
+
+        $pyz{{ module }}Entity = ${{ module | lower }}Query->findOne();
+
+        if (!$pyz{{ module }}Entity) {
+        return null;
+        }
+
+        return $this->getFactory()->create{{ module }}Mapper()->map{{ module }}EntityToTransfer($pyz{{ module }}Entity, new {{ module }}Transfer());
+    }
+
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return array
+    */
+    public function find{{ module }}sByTransfer({{ module }}Transfer ${{ module | lower }}Transfer): array
+    {
+        ${{ module | lower }}Query = $this->createQueryBy{{ module }}Transfer(${{ module | lower }}Transfer);
+
+        $pyz{{ module }}Entities = ${{ module | lower }}Query->find();
+
+        return $this->getFactory()->create{{ module }}Mapper()->map{{ module }}EntityCollectionToTransfers($pyz{{ module }}Entities);
+    }
+
+    /**
+    * @param {{ module }}Transfer ${{ module | lower }}Transfer
+    *
+    * @return Pyz{{ module }}Query
+    */
+    protected function createQueryBy{{ module }}Transfer({{ module }}Transfer ${{ module | lower }}Transfer): Pyz{{ module }}Query
+    {
+
+        ${{ module | lower }}Query = $this->getFactory()->create{{ module }}Query();
+
+        if (${{ module | lower }}Transfer->getId{{ module }}()) {
+            ${{ module | lower }}Query->filterById{{ module }}(${{ module | lower }}Transfer->getId{{ module }}());
+        }
+
+        if (${{ module | lower }}Transfer->getStatus()) {
+            ${{ module | lower }}Query->filterByStatus(${{ module | lower }}Transfer->getStatus());
+        }
+
+        if (${{ module | lower }}Transfer->getName()) {
+            ${{ module | lower }}Query->filterByName_Like(${{ module | lower }}Transfer->getName());
+        }
+
+        return ${{ module | lower }}Query;
+
+    }
+
+}

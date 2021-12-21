@@ -1,0 +1,38 @@
+spryk: template
+description: "Adds a new *module* CRUD (Zed communication layer)."
+priority: 1
+mode: project
+
+arguments:
+
+    organization:
+        inherit: true
+        default: Pyz
+
+    module:
+        inherit: true
+        type: NewModuleType
+
+    template:
+        value: ''
+
+    targetPath:
+        value: "{{ moduleRoot }}/"
+
+    directories:
+        skipOnProjectLevel: true
+        value:
+            - "src/{{ organization }}/"
+
+    pathToSchemaFile:
+
+
+preSpryks:
+    - AddModule
+
+postSpryks:
+    - AddZedBusinessFacade
+    - AddZedBusinessModelReader
+    - AddZedBusinessModelWriter
+    - AddZedCommunicationControllerAddController
+    - AddZedPersistenceEntityManager

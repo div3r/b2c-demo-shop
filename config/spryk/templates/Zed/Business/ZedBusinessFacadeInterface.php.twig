@@ -1,0 +1,45 @@
+<?php
+
+{{ include('Partials/license.twig') }}
+
+namespace {{ organization }}\Zed\{{ module }}\Business;
+
+interface {{ module }}FacadeInterface
+{
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+    public function create{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer
+     */
+    public function save{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): {{ module }}Transfer;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer|null
+     */
+    public function find{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): ?{{ module }}Transfer;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return {{ module }}Transfer[]
+     */
+
+    public function find{{ module }}s({{ module }}Transfer ${{ module | lower }}Transfer): array;
+
+    /**
+     * @param {{ module }}Transfer ${{ module | lower }}Transfer
+     *
+     * @return void
+     */
+
+    public function delete{{ module }}({{ module }}Transfer ${{ module | lower }}Transfer): void;
+}

@@ -1,0 +1,23 @@
+spryk: template
+description: "Adds a new Zed controller."
+mode: project
+
+arguments:
+
+    module:
+        inherit: true
+
+    organization:
+        inherit: true
+
+    template:
+        value: Zed/Communication/Controller/AddController.php.twig
+
+    targetFilename:
+        value: "AddController.php"
+
+    targetPath:
+        value: "src/{{ organization }}/Zed/{{ module }}/Controller/Communication/Controller/"
+
+preSpryks:
+    - AddModule
