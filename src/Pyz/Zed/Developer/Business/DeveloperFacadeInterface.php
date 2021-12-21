@@ -7,40 +7,40 @@ use Generated\Shared\Transfer\DeveloperTransfer;
 interface DeveloperFacadeInterface
 {
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function createDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer;
+    public function createDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function saveDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer;
+    public function saveDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer|null
      */
-    public function findDeveloper(DeveloperTransfer $cookTransfer): ?DeveloperTransfer;
+    public function findDeveloper(DeveloperTransfer $developerTransfer): ?DeveloperTransfer;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer[]
      */
 
-    public function findDevelopers(DeveloperTransfer $cookTransfer): array;
+    public function findDevelopers(DeveloperTransfer $developerTransfer): array;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return void
      */
 
-    public function deleteDeveloper(DeveloperTransfer $cookTransfer): void;
+    public function deleteDeveloper(DeveloperTransfer $developerTransfer): void;
 
 }

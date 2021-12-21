@@ -7,23 +7,23 @@ use Generated\Shared\Transfer\DeveloperTransfer;
 interface DeveloperEntityManagerInterface
 {
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function createDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer;
+    public function createDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function updateDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer;
+    public function updateDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer;
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return void
      */
-    public function deleteDeveloper(DeveloperTransfer $cookTransfer): void;
+    public function deleteDeveloper(DeveloperTransfer $developerTransfer): void;
 }

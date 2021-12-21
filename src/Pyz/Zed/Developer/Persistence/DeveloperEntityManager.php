@@ -10,53 +10,53 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
 class DeveloperEntityManager extends AbstractEntityManager implements DeveloperEntityManagerInterface
 {
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
 
-    public function createDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer
+    public function createDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer
     {
-        $pyzDeveloperEntity = $this->getFactory()->createDeveloperMapper()->mapDeveloperTransferToEntity($cookTransfer, new PyzDeveloper());
+        $pyzDeveloperEntity = $this->getFactory()->createDeveloperMapper()->mapDeveloperTransferToEntity($developerTransfer, new PyzDeveloper());
         $pyzDeveloperEntity->save();
 
-        return $this->getFactory()->createDeveloperMapper()->mapDeveloperEntityToTransfer($pyzDeveloperEntity, $cookTransfer);
+        return $this->getFactory()->createDeveloperMapper()->mapDeveloperEntityToTransfer($pyzDeveloperEntity, $developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      *@throws EntityNotFoundException
      *
      */
-    public function updateDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer
+    public function updateDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer
     {
 
-        $cookTransfer->requireIdDeveloper();
-        $pyzDeveloperEntity = $this->getFactory()->createDeveloperQuery()->findOneByIdDeveloper($cookTransfer->getIdDeveloper());
+        $developerTransfer->requireIdDeveloper();
+        $pyzDeveloperEntity = $this->getFactory()->createDeveloperQuery()->findOneByIdDeveloper($developerTransfer->getIdDeveloper());
 
         if (!$pyzDeveloperEntity) {
-            throw new EntityNotFoundException(sprintf('Developer entity with id: %s haven\'t been found', $cookTransfer->getIdDeveloper()));
+            throw new EntityNotFoundException(sprintf('Developer entity with id: %s haven\'t been found', $developerTransfer->getIdDeveloper()));
         }
 
-        $pyzDeveloperEntity = $this->getFactory()->createDeveloperMapper()->mapDeveloperTransferToEntity($cookTransfer, $pyzDeveloperEntity);
+        $pyzDeveloperEntity = $this->getFactory()->createDeveloperMapper()->mapDeveloperTransferToEntity($developerTransfer, $pyzDeveloperEntity);
         $pyzDeveloperEntity->save();
 
-        return $this->getFactory()->createDeveloperMapper()->mapDeveloperEntityToTransfer($pyzDeveloperEntity, $cookTransfer);
+        return $this->getFactory()->createDeveloperMapper()->mapDeveloperEntityToTransfer($pyzDeveloperEntity, $developerTransfer);
 
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return void
      */
-    public function deleteDeveloper(DeveloperTransfer $cookTransfer): void
+    public function deleteDeveloper(DeveloperTransfer $developerTransfer): void
     {
 
-        $cookTransfer->requireIdDeveloper();
-        $pyzDeveloperEntity = $this->getFactory()->createDeveloperQuery()->findOneByIdDeveloper($cookTransfer->getIdDeveloper());
+        $developerTransfer->requireIdDeveloper();
+        $pyzDeveloperEntity = $this->getFactory()->createDeveloperQuery()->findOneByIdDeveloper($developerTransfer->getIdDeveloper());
 
         if ($pyzDeveloperEntity) {
             $pyzDeveloperEntity->delete();

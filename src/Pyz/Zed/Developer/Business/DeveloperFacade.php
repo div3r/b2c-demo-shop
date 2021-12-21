@@ -8,53 +8,53 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class DeveloperFacade extends AbstractFacade implements DeveloperFacadeInterface
 {
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function createDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer
+    public function createDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer
     {
-        return $this->getFactory()->createDeveloperWriter()->createDeveloper($cookTransfer);
+        return $this->getFactory()->createDeveloperWriter()->createDeveloper($developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer
      */
-    public function saveDeveloper(DeveloperTransfer $cookTransfer): DeveloperTransfer
+    public function saveDeveloper(DeveloperTransfer $developerTransfer): DeveloperTransfer
     {
-        return $this->getFactory()->createDeveloperWriter()->updateDeveloper($cookTransfer);
+        return $this->getFactory()->createDeveloperWriter()->updateDeveloper($developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer|null
      */
-    public function findDeveloper(DeveloperTransfer $cookTransfer): ?DeveloperTransfer
+    public function findDeveloper(DeveloperTransfer $developerTransfer): ?DeveloperTransfer
     {
-        return $this->getFactory()->createDeveloperReader()->findDeveloperByTransfer($cookTransfer);
+        return $this->getFactory()->createDeveloperReader()->findDeveloperByTransfer($developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer[]
      */
-    public function findDevelopers(DeveloperTransfer $cookTransfer): array
+    public function findDevelopers(DeveloperTransfer $developerTransfer): array
     {
-        return $this->getFactory()->createDeveloperReader()->findDevelopersByTransfer($cookTransfer);
+        return $this->getFactory()->createDeveloperReader()->findDevelopersByTransfer($developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return void
      */
-    public function deleteDeveloper(DeveloperTransfer $cookTransfer): void
+    public function deleteDeveloper(DeveloperTransfer $developerTransfer): void
     {
-        $this->getFactory()->createDeveloperWriter()->deleteDeveloper($cookTransfer);
+        $this->getFactory()->createDeveloperWriter()->deleteDeveloper($developerTransfer);
     }
 
 }

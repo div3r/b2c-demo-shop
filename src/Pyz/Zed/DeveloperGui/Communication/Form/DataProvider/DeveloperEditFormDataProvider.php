@@ -10,14 +10,14 @@ class DeveloperEditFormDataProvider
     /**
      * @var DeveloperFacadeInterface
      */
-    private $cookFacade;
+    private $developerFacade;
 
     /**
-     * @param DeveloperFacadeInterface $cookFacade
+     * @param DeveloperFacadeInterface $developerFacade
      */
-    public function __construct(DeveloperFacadeInterface $cookFacade)
+    public function __construct(DeveloperFacadeInterface $developerFacade)
     {
-        $this->cookFacade = $cookFacade;
+        $this->developerFacade = $developerFacade;
     }
 
     /**
@@ -30,13 +30,13 @@ class DeveloperEditFormDataProvider
         $searchDeveloperTransfer = (new DeveloperTransfer())
             ->setIdDeveloper($idDeveloper);
 
-        $cookTransfer = $this->cookFacade->findDeveloper($searchDeveloperTransfer);
+        $developerTransfer = $this->developerFacade->findDeveloper($searchDeveloperTransfer);
 
-        if (!$cookTransfer) {
+        if (!$developerTransfer) {
             return [];
         }
 
-        $data = $cookTransfer->toArray();
+        $data = $developerTransfer->toArray();
 
         return $data;
     }

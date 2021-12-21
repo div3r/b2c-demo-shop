@@ -10,35 +10,35 @@ class DeveloperReader
     /**
      * @var DeveloperRepositoryInterface
      */
-    private $cookRepository;
+    private $developerRepository;
 
     /**
-     * @param DeveloperRepositoryInterface $cookRepository
+     * @param DeveloperRepositoryInterface $developerRepository
      */
 
-    public function __construct(DeveloperRepositoryInterface $cookRepository)
+    public function __construct(DeveloperRepositoryInterface $developerRepository)
     {
-        $this->cookRepository = $cookRepository;
+        $this->developerRepository = $developerRepository;
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return DeveloperTransfer|null
      */
-    public function findDeveloperByTransfer(DeveloperTransfer $cookTransfer): ?DeveloperTransfer
+    public function findDeveloperByTransfer(DeveloperTransfer $developerTransfer): ?DeveloperTransfer
     {
-        return $this->cookRepository->findDeveloperByTransfer($cookTransfer);
+        return $this->developerRepository->findDeveloperByTransfer($developerTransfer);
     }
 
     /**
-     * @param DeveloperTransfer $cookTransfer
+     * @param DeveloperTransfer $developerTransfer
      *
      * @return array
      */
 
-    public function findDevelopersByTransfer(DeveloperTransfer $cookTransfer): array
+    public function findDevelopersByTransfer(DeveloperTransfer $developerTransfer): array
     {
-        return $this->cookRepository->findDevelopersByTransfer($cookTransfer);
+        return $this->developerRepository->findDevelopersByTransfer($developerTransfer);
     }
 }
