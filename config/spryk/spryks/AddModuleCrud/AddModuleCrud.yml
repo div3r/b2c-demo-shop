@@ -24,8 +24,6 @@ arguments:
         value:
             - "src/{{ organization }}/"
 
-    pathToSchemaFile:
-
 
 preSpryks:
     - AddModule
